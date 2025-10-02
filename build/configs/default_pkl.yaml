@@ -1,0 +1,12 @@
+seed: 42
+img_size: 128
+batch_size: 96
+num_workers: 2
+lr: 0.0003
+epochs: 50
+use_focal: false
+focal_gamma: 1.0
+use_class_weights: true
+device: auto
+data_path: data/wafer_maps.pkl
+out_dir: outputs/pkl_exp1
