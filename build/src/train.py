@@ -160,7 +160,7 @@ def train_main(cfg):
 
 if __name__ == "__main__":
     import yaml
-    cfg_file = "configs/default_pkl.yaml"
+    cfg_file = "configs/config.yaml"
     with open(cfg_file, "r") as f:
         cfg = yaml.safe_load(f)
     train_main(cfg)
