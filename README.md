@@ -2,7 +2,7 @@ Implementation of CI/CD pipeline is coming soon!
 
 The project is developed in VSCode.
 
-### Steps to run the workflow (From second step onwards, follow all steps with "build" as the working directory):
+### Steps to run the workflow:
 
 1. Clone the repository: 
 ```bash
@@ -48,6 +48,6 @@ streamlit run src/app.py
 This will open the app in a web browser. You can drag and drop wafer images and get the output results. Some sample wafer images are available in “data/extracted_samples” directory. These samples are extracted from data/wafer_test.pkl
 
 ### Additional information:
-The raw dataset is in archive.zip. It was extracted, put in "build/data/" directory and renamed as "wafer_maps.pkl"
+The raw dataset is in archive.zip. It was extracted, put in "data/" directory and renamed as "wafer_maps.pkl"
 "wafer_train.pkl" and "wafer_test.pkl" were extracted based on split label "Testing" and "Training" in the raw dataset. The reason for the swap is because there were more samples with "Testing" label than "Training" label.
-The model evaluation metrics are saved in "evaluation score.txt"
+The model evaluation metrics are saved in "outputs/pkl_exp1/classification_report.csv"
