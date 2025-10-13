@@ -43,7 +43,7 @@ def eval_main(cfg):
     print(report)
 
     report_df = pd.DataFrame(report).transpose()
-    report_df.to_csv(cfg['out_dir'])
+    report_df.to_csv(os.path.join(cfg['out_dir'], "classification_report.csv"))
 
     return test_f1
 

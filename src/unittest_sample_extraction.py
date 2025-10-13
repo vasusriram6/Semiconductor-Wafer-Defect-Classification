@@ -62,5 +62,5 @@ class_to_idx = {c: i for i, c in enumerate(classes)}
 train_df["label_idx"] = train_df["failureType"].map(class_to_idx)
 test_df["label_idx"] = test_df["failureType"].map(class_to_idx)
 
-train_df.iloc[0:4].to_pickle(cfg_test["train_data_path"])
-test_df.iloc[0:2].to_pickle(cfg_test["test_data_path"])
+pd.to_pickle(train_df.iloc[0:4], cfg_test["train_data_path"])
+pd.to_pickle(test_df.iloc[0:2], cfg_test["test_data_path"])
