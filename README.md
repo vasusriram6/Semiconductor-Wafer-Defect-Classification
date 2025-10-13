@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 # Semiconductor-Wafer-Defect-Classification
-=======
+
 Implementation of CI/CD pipeline is coming soon!
 
 The project is developed in VSCode.
