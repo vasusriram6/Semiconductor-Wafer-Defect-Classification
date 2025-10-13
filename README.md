@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-# Semiconductor-Wafer-Defect-Classification
-=======
+
+# Semiconductor Wafer Defect Classification
+
 Implementation of CI/CD pipeline is coming soon!
 
 The project is developed in VSCode.
@@ -9,7 +9,7 @@ The project is developed in VSCode.
 
 1. Clone the repository: 
 ```bash
-https://github.com/vasusriram6/Semiconductor-Wafer-Defect-Classification/tree/master 
+https://github.com/vasusriram6/Semiconductor-Wafer-Defect-Classification/tree/main 
 ```
 
 2. If it doesn't exist beforehand, create and activate a base environment with python version 3.13.5:
@@ -54,4 +54,3 @@ This will open the app in a web browser. You can drag and drop wafer images and 
 1. The raw dataset is in archive.zip. It was extracted, put in "data/" directory and renamed as "wafer_maps.pkl"
 2. "wafer_train.pkl" and "wafer_test.pkl" were extracted based on split label "Testing" and "Training" in the raw dataset. The reason for the swap is because there were more samples with "Testing" label than "Training" label.
 3. The model evaluation metrics are saved in "outputs/pkl_exp1/classification_report.csv"
->>>>>>> 2e34c7114d2d596e3d95db069325a9b529423755
