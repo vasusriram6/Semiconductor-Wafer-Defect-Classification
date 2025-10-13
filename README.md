@@ -9,7 +9,7 @@ The project is developed in VSCode.
 
 1. Clone the repository: 
 ```bash
-https://github.com/vasusriram6/Semiconductor-Wafer-Defect-Classification/tree/master 
+https://github.com/vasusriram6/Semiconductor-Wafer-Defect-Classification/tree/main 
 ```
 
 2. If it doesn't exist beforehand, create and activate a base environment with python version 3.13.5:
