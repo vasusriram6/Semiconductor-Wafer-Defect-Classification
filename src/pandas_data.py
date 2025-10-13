@@ -26,12 +26,12 @@ def flatten_label(x):
         # Not a list/array, return as is
         return x
 
-def load_and_process_pandas_data(data_path, seed=42):
-    if os.path.exists("data/wafer_train.pkl") and os.path.exists("data/wafer_test.pkl"):
+def load_and_process_pandas_data(data_path, train_data_path, test_data_path, seed=42):
+    if os.path.exists(train_data_path) and os.path.exists(test_data_path):
 
         print("Train test split dataset pickle files already available, using them.")
-        train_df = pd.read_pickle("data/wafer_train.pkl")
-        test_df = pd.read_pickle("data/wafer_test.pkl")
+        train_df = pd.read_pickle(train_data_path)
+        test_df = pd.read_pickle(test_data_path)
         classes = sorted(train_df["failureType"].unique())
         print("Read pickles successfully.")
 

@@ -8,16 +8,16 @@ from sklearn.metrics import accuracy_score, f1_score
 import tqdm
 from sklearn.utils.class_weight import compute_class_weight
 
-from .pandas_data import load_and_process_pandas_data, WaferMapDataset#, load_and_filter_pkl, stratified_split
-from .transforms import build_transforms
-from .models import build_model
-from .losses import FocalLoss
-from .checkpoint import CheckpointManager
+from src.pandas_data import load_and_process_pandas_data, WaferMapDataset#, load_and_filter_pkl, stratified_split
+from src.transforms import build_transforms
+from src.models import build_model
+from src.losses import FocalLoss
+from src.checkpoint import CheckpointManager
 
 def train_main(cfg):
         
     
-    (train_imgs, train_lbls), (val_imgs, val_lbls), (test_imgs, test_lbls), classes = load_and_process_pandas_data(data_path=cfg["data_path"], seed=cfg["seed"])
+    (train_imgs, train_lbls), (val_imgs, val_lbls), (test_imgs, test_lbls), classes = load_and_process_pandas_data(data_path=cfg["data_path"], train_data_path=cfg["train_data_path"], test_data_path=cfg["test_data_path"], seed=cfg["seed"])
     num_classes = len(classes)
     train_tf, eval_tf = build_transforms(cfg["img_size"])
 
@@ -157,6 +157,8 @@ def train_main(cfg):
     dummy = torch.randn(1, 3, cfg["img_size"], cfg["img_size"], device=device)
     torch.onnx.export(model, dummy, os.path.join(cfg["out_dir"], "wafer.onnx"), opset_version=12)
     print("Exported model.")
+
+    return test_f1
 
 if __name__ == "__main__":
     import yaml

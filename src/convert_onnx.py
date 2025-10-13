@@ -1,7 +1,7 @@
 import os
 import torch
 
-from .models import build_model
+from src.models import build_model
 
 
 def convert_onnx(torch_model_path, output_path):

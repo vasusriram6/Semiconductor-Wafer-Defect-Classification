@@ -9,7 +9,7 @@ from models import build_model # ensure import path
 from transforms import build_transforms
 
 # Configuration
-ONNX_MODEL_PATH = "outputs/pkl_exp1/wafer.onnx"
+ONNX_MODEL_PATH = "outputs/main_output/wafer.onnx"
 IMG_SIZE = 128
 
 # Load class names following the exact order
@@ -45,7 +45,7 @@ def infer_onnx(session, img_array):
     
     # model_pt = build_model(len(CLASSES))
 
-    # sd = torch.load("outputs/pkl_exp1/best_model.pt", map_location="cpu")
+    # sd = torch.load("outputs/main_output/best_model.pt", map_location="cpu")
 
     # model_pt.load_state_dict(sd); model_pt.eval()
 

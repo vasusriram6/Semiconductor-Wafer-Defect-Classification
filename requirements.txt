@@ -9,3 +9,4 @@ onnx
 onnxruntime
 grad-cam
 streamlit
+pytest

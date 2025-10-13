@@ -4,12 +4,12 @@ import pandas as pd
 import torch
 import os
 
-from .transforms import build_transforms
-from .pandas_data import WaferMapDataset
-from .models import build_model
+from src.transforms import build_transforms
+from src.pandas_data import WaferMapDataset
+from src.models import build_model
 
 def eval_main(cfg):
-    test_df = pd.read_pickle("data/wafer_test.pkl")
+    test_df = pd.read_pickle(cfg["test_data_path"])
     classes = sorted(test_df["failureType"].unique())
     num_classes = len(classes)
     train_tf, eval_tf = build_transforms(cfg["img_size"])
@@ -43,7 +43,9 @@ def eval_main(cfg):
     print(report)
 
     report_df = pd.DataFrame(report).transpose()
-    report_df.to_csv("outputs/pkl_exp1/classification_report.csv")
+    report_df.to_csv(cfg['out_dir'])
+
+    return test_f1
 
 if __name__ == "__main__":
     import yaml
