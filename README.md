@@ -1,5 +1,5 @@
 
-# Semiconductor-Wafer-Defect-Classification
+# Semiconductor Wafer Defect Classification
 
 Implementation of CI/CD pipeline is coming soon!
 
