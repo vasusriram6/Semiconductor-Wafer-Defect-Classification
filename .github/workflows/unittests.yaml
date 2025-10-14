@@ -14,9 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the code from the repository
-      - name: Check out code
-        uses: actions/checkout@v2
+      # Step 1.1: Install git LFS
+      - name: Install git-lfs
+        run: sudo apt-get install git-lfs
+
+      # Step 1.2: Set up git LFS and check out code   
+      - name: Setup git-lfs
+        run: git lfs install
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      # # Step 1: Check out the code from the repository
+      # - name: Check out code
+      #   uses: actions/checkout@v2
 
       # Step 2: Set up Python environment
       - name: Set up Python
