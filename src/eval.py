@@ -24,7 +24,7 @@ def eval_main(cfg):
 
     model = build_model(num_classes).to(device)
 
-    model.load_state_dict(torch.load(os.path.join(cfg['out_dir'], "best_model.pt")))
+    model.load_state_dict(torch.load(os.path.join(cfg['out_dir'], "best_model.pt"), map_location=device))
     model.eval()
     y_true_test, y_pred_test = [], []
 

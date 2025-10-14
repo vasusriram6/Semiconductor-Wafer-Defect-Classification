@@ -59,7 +59,7 @@ def train_main(cfg):
     checkpoint_path = os.path.join(cfg["out_dir"], "checkpoint_last.pt")
     start_epoch = 0
     if os.path.exists(checkpoint_path):
-        checkpoint = torch.load(checkpoint_path, map_location=cfg["device"] if cfg["device"] != "auto" else ("cuda" if torch.cuda.is_available() else "cpu"))
+        checkpoint = torch.load(checkpoint_path, map_location=device)#cfg["device"] if cfg["device"] != "auto" else ("cuda" if torch.cuda.is_available() else "cpu"))
         model.load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         scheduler.load_state_dict(checkpoint["scheduler_state_dict"])
@@ -140,7 +140,7 @@ def train_main(cfg):
             break
 
     # final test
-    model.load_state_dict(torch.load(os.path.join(cfg["out_dir"], "best_model.pt")))
+    model.load_state_dict(torch.load(os.path.join(cfg["out_dir"], "best_model.pt"), map_location=device))
     model.eval()
     test_true, test_pred = [], []
     with torch.no_grad():
