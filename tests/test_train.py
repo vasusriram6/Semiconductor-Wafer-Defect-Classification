@@ -7,3 +7,7 @@ def test_train_main():
         cfg = yaml.safe_load(f)
     train_f1 = train_main(cfg)
     assert isinstance(train_f1, float)
+
+
+# if __name__=="__main__":
+#     test_train_main()
