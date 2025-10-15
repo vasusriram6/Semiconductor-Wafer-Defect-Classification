@@ -19,7 +19,7 @@ jobs:
         run: sudo apt-get install git-lfs
 
       # Step 1.2: Set up git LFS and check out code   
-      - name: Setup git-lfs
+      - name: Setup git-lfs and check out code
         run: git lfs install
       - uses: actions/checkout@v2
         with:
@@ -43,3 +43,5 @@ jobs:
       # Step 4: Run tests
       - name: Run tests
         run: pytest
+
+  #fish:

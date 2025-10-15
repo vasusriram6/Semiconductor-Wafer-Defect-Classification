@@ -19,7 +19,8 @@ CLASSES = [
 
 
 # ONNX inference helper
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_onnx_session():
     providers = ["CUDAExecutionProvider", "CPUExecutionProvider"]
     return ort.InferenceSession(ONNX_MODEL_PATH, providers=providers)
@@ -69,7 +70,7 @@ if uploaded_files:
     results = []
     for f in uploaded_files:
         img = Image.open(f)
-        st.image(img)  # Show the actual image you are inferring on
+        #st.image(img)  # Show the actual image you are inferring on
 
         train_tf, eval_tf = build_transforms(IMG_SIZE)
 
@@ -77,8 +78,12 @@ if uploaded_files:
         img_array = input_tensor.unsqueeze(0).numpy() # create a mini-batch as expected by the model
 
         pred_class, conf = infer_onnx(session, img_array)
-        results.append((f.name, pred_class, conf))
+        results.append((f.name, pred_class, conf, img))
 
     st.write("## Results:")
-    for fname, pred_class, conf in results:
-        st.write(f"**{fname}:** {pred_class}  (Confidence: {conf:.2f})")
+    for fname, pred_class, conf, img in results:
+        col1, col2 = st.columns([1,4])
+        with col1:
+            st.image(img, width=50)
+        with col2:
+            st.write(f"**{fname}:** {pred_class}  (Confidence: {conf:.2f})")

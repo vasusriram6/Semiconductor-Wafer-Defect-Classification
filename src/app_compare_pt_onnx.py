@@ -20,7 +20,8 @@ CLASSES = [
 
 
 # ONNX inference helper
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
+@st.cache_resource
 def load_onnx_session():
     providers = ["CUDAExecutionProvider", "CPUExecutionProvider"]
     return ort.InferenceSession(ONNX_MODEL_PATH, providers=providers)
@@ -76,7 +77,7 @@ if uploaded_files:
 
     for f in uploaded_files:
         img = Image.open(f)
-        st.image(img)  # Show the actual image you are inferring on
+        #st.image(img)  # Show the actual image you are inferring on
 
         train_tf, eval_tf = build_transforms(IMG_SIZE)
 
@@ -91,12 +92,16 @@ if uploaded_files:
         pred_class_pt, conf_pt = infer_pt(model_pt, img_array)
         time_pt.append(time.time()-time2)
 
-        results_onnx.append((f.name, pred_class_onnx, conf_onnx))
+        results_onnx.append((f.name, pred_class_onnx, conf_onnx, img))
 
     st.write("Avg time taken for ONNX inference:", sum(time_onnx)/len(time_onnx))
 
     st.write("Avg time taken for PyTorch inference:", sum(time_pt)/len(time_pt))
 
     st.write("## Results:")
-    for fname, pred_class, conf in results_onnx:
-        st.write(f"**{fname}:** {pred_class}  (Confidence: {conf:.2f})")
+    for fname, pred_class, conf, img in results_onnx:
+        col1, col2 = st.columns([1,4])
+        with col1:
+            st.image(img, width=50)
+        with col2:
+            st.write(f"**{fname}:** {pred_class}  (Confidence: {conf:.2f})")
