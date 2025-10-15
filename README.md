@@ -38,7 +38,7 @@ Note: You can adjust configurations for training and evaluation in configs/confi
 ```bash
 python -m src.train
 ```
-Note: If you want to train a model from the beginning, make sure the "outputs/pkl_exp1/" directory is empty 
+Note: If you want to train a model from the beginning, make sure the "outputs/main_output/" directory is empty 
 
 6. For model evaluation on the testing dataset, run:
 ```bash
@@ -53,4 +53,4 @@ This will open the app in a web browser. You can drag and drop wafer images and 
 ### Additional information:
 1. The raw dataset is in archive.zip. It was extracted, put in "data/" directory and renamed as "wafer_maps.pkl"
 2. "wafer_train.pkl" and "wafer_test.pkl" were extracted based on split label "Testing" and "Training" in the raw dataset. The reason for the swap is because there were more samples with "Testing" label than "Training" label.
-3. The model evaluation metrics are saved in "outputs/pkl_exp1/classification_report.csv"
+3. The model evaluation metrics are saved in "outputs/main_output/classification_report.csv"
