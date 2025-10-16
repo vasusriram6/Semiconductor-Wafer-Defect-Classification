@@ -25,5 +25,5 @@ COPY outputs/ outputs/
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
-# Run app.py when the container launches
-CMD ["streamlit", "run", "src/app.py"]
+# Run app.py when the container launches, and make sure the streamlit app is accessible from your device outside the container
+CMD ["streamlit", "run", "src/app.py", "--server.address=0.0.0.0"]

@@ -2,9 +2,9 @@ name: CI/CD for Dockerized Streamlit app
 
 # Trigger the workflow on any push to the main branch or pull request
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   pull_request:
     branches:
       - main
