@@ -1,2 +1,7 @@
 #data files
 data/
+.venv
+venv
+*.ipynb
+.pytest_cache
+__pycache__/
