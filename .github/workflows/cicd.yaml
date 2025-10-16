@@ -11,12 +11,12 @@ on:
 
 jobs:
   
-  testdockerbuild:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build The Docker Image
-      run: docker build . --file DockerFile --tag workflow-test:$(date +%s)
+  # testdockerbuild:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   - name: Build The Docker Image
+  #     run: docker build . --file DockerFile --tag workflow-test:$(date +%s)
 
   build-and-test:
     runs-on: ubuntu-latest
@@ -29,7 +29,7 @@ jobs:
       # Step 1.2: Set up git LFS and check out code   
       - name: Setup git-lfs and check out code
         run: git lfs install
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           lfs: true
       # # Step 1: Check out the code from the repository
@@ -58,7 +58,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
