@@ -35,7 +35,7 @@ venv\Scripts\Activate.ps1
 ```
 4. Once the virtual environment is activated, install the dependencies:
 ```bash
-pip install -r requirements.txt
+pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126; pip install --no-cache-dir -r requirements.txt
 ```
 Optional installation for GPU acceleration (with CUDA 12.6 installed on your device):
 

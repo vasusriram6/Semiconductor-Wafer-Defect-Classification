@@ -25,15 +25,22 @@ def load_onnx_session():
     providers = ["CUDAExecutionProvider", "CPUExecutionProvider"]
     return ort.InferenceSession(ONNX_MODEL_PATH, providers=providers)
 
+def softmax(logits):
+    # Step 1: Exponentiate the logits to scale them
+    exp_values = np.exp(logits - np.max(logits))  # Subtracting max for numerical stability
+    # Step 2: Normalize the exponentials by dividing with their sum
+    probabilities = exp_values / np.sum(exp_values)
+    return probabilities
 
 def infer_onnx(session, img_array):
     ort_inputs = {session.get_inputs()[0].name: img_array.astype(np.float32)}
     ort_outs = session.run([], ort_inputs)[0]
     output = ort_outs.flatten()   #Probability logits
-    #probs = output
+    probs = softmax(output)
+    print(probs)
 
     pred_idx = int(np.argmax(output))
-    confidence = float(output[pred_idx])
+    confidence = probs[pred_idx]
     # pred_idx = int(np.argmax(probs))
     # confidence = float(probs[pred_idx])
 
@@ -86,4 +93,4 @@ if uploaded_files:
         with col1:
             st.image(img, width=50)
         with col2:
-            st.write(f"**{fname}:** {pred_class}  (Confidence: {conf:.2f})")
+            st.write(f"**{fname}:** {pred_class}  (Confidence: {conf:.6f})")
