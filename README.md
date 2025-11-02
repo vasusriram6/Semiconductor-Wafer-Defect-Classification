@@ -34,13 +34,15 @@ python -m venv venv
 venv\Scripts\Activate.ps1
 ```
 4. Once the virtual environment is activated, install the dependencies:
+
+With GPU acceleration:
 ```bash
 pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126; pip install --no-cache-dir -r requirements.txt
 ```
-Optional installation for GPU acceleration (with CUDA 12.6 installed on your device):
+Without GPU acceleration:
 
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+pip install --no-cache-dir torch torchvision torchaudio; pip install --no-cache-dir -r requirements.txt
 ```
 Note: You can adjust configurations for training and evaluation in configs/config.yaml
 
