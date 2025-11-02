@@ -11,7 +11,7 @@ Idle app:
 
 App output after dragging and dropping wafer images:
 
-<img width="800" height="400" alt="App inference output" src="https://github.com/user-attachments/assets/bf665e0c-075a-4393-932b-9eba630b071d" />
+<img width="800" height="400" alt="App inference output softmax" src="https://github.com/user-attachments/assets/a3f8f45c-0ec8-4509-b3d2-3c43f0ee8e48" />
 
 Some sample wafer images are available in “data/extracted_samples” directory. These samples are extracted from data/wafer_test.pkl
 
